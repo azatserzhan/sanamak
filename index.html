@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="libs/search/jquery.typeahead.css">
+    <link rel="stylesheet" href="libs/search/navigation_v1.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+
+    <!-- <script type="text/javascript" src="libs/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="libs/jquery-ui.js"></script> -->
+
+    <script src="libs/search/jquery-2.1.0.min.js"></script>
+    <script src="libs/search/jquery.typeahead.js"></script>
+    <script type="text/javascript" src="libs/Chart.min.js"></script>
+    <script type="text/javascript" src="libs/materialize.min.js"></script>
+    <script type="text/javascript" src="js/logic.js"></script>
+
+    
+</head>
+
+<body>
+    
+    
+    <div id="slide-nav-container">
+        <ul id="slide-out" class="side-nav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="img/stats/office.jpg">
+                    </div>
+                    <a href="#!user"><img class="circle" src="img/stats/yuna.jpg"></a>
+                    <a href="#!name"><span class="white-text name">Кира Имажанова</span></a>
+                    <a href="#!email"><span class="white-text email">kimajan@gmail.com</span></a>
+                </div>
+            </li>
+            <li id="btn-home"><a href="#!"><i class="material-icons">home</i>Главная</a></li>
+            <li id="btn-stats"><a href="#!"><i class="material-icons">timeline</i>Статистика</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader"><i class="material-icons">time_to_leave</i>Поставщики</a></li>
+            <li><a class="waves-effect" href="#!"><i class="material-icons">settings_applications </i>Настройки</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse slide-nav-button"><i class="material-icons">menu</i></a>
+    </div>
+
+    <div id="history-container">
+        <div id="h-header">
+            <div class="h-box">
+                <div>ИП Имажанова К.</div>
+                <div>Итоговый баланс</div>
+                <div>160 000,00 ₸</div>
+            </div>
+            
+        </div>
+        <div id="h-body" class="card-panel">
+            <div id="h-state">
+                <div id="h-state-date">3 декабря</div>
+                <div id="h-state-money">160 000,00 ₸</div>
+            </div>
+        </div>
+
+        
+        
+        <div id="graphic-container" class="card-panel">
+          <div id="customCarousel" class="carousel carousel-slider center" data-indicators="true">
+            <div class="carousel-fixed-item center">
+            </div>
+            <div class="carousel-item white-text" href="#one!">
+              <div id="graphic-container-1">
+                <canvas id="myChart"></canvas>
+            </div>
+            </div>
+            <div class="carousel-item white-text" href="#two!">
+              <div id="graphic-container-2">
+                <canvas id="myChart-diagramm"></canvas>    
+              </div> 
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div id="main-box-container">
+
+        <div id="m-menu-0">
+            <div id="m-menu-0-0" class="m-menu-0 waves-effect waves-light ">Статистика</div>
+            <div id="m-menu-0-1" class="m-menu-0">  </div>
+            <div id="m-menu-0-2" class="m-menu-0 waves-effect waves-light ">Готово</div>
+        </div>
+        <div id="m-menu-1-container">
+            <div id="m-menu-1-0" class="m-menu-1 waves-effect waves-light btn">Расходы</div>
+            <div id="m-menu-1-1" class="m-menu-1 waves-effect waves-light btn">Доходы</div>
+        </div>
+        <div id="m-number-box">
+            <div id="m-number">+0</div>
+            <img id="m-number-img" src="img/menu/2.png">
+        </div>
+        <div id="m-number-in" class="card-panel">
+            <div class="m-number-0 button checked-img" key="Картошка">
+                <i class="m-icon large material-icons">local_pizza</i>
+                <div class="h1">Картошка</div>
+            </div>
+            <div class="m-number-0" key="Лук">
+                <i class="m-icon large material-icons">local_florist</i>
+                <div class="h1">Лук</div>
+            </div>
+            <div class="m-number-0" key="Капуста">
+                <i class="m-icon large material-icons">local_shipping</i>
+                <div class="h1">Капуста</div>
+            </div>
+            <div class="m-number-0" key="Укроп">
+                <i class="m-icon large material-icons">room_service</i>
+                <div class="h1">Укроп</div>
+            </div>
+            <div class="m-number-0" key="Помидоры">
+                <i class="m-icon large material-icons">shopping_cart</i>
+                <div class="h1">Помидоры</div>
+            </div>
+            <div class="m-number-0" key="Чеснок">
+                <i class="m-icon large material-icons">spa</i>
+                <div class="h1">Чеснок</div>
+            </div>
+            <div class="m-number-0" key="Баклажан">
+                <i class="m-icon large material-icons">wb_incandescent</i>
+                <div class="h1">Баклажан</div>
+            </div>
+            <div class="m-number-0" key="Добавить">
+                <i class="m-icon large material-icons">add</i>
+                <div class="h1">Добавить</div>
+            </div>
+        </div>
+        <div id="m-shablon">ШАБЛОНЫ</div>
+        <div id="m-number-container">
+            <div class="m-number waves-effect waves-light btn">1</div>
+            <div class="m-number waves-effect waves-light btn">2</div>
+            <div class="m-number waves-effect waves-light btn">3</div>
+            <div class="m-number waves-effect waves-light btn">4</div>
+            <div class="m-number waves-effect waves-light btn">5</div>
+            <div class="m-number waves-effect waves-light btn">6</div>
+            <div class="m-number waves-effect waves-light btn">7</div>
+            <div class="m-number waves-effect waves-light btn">8</div>
+            <div class="m-number waves-effect waves-light btn">9</div>
+            <div class="m-number waves-effect waves-light btn">.</div>
+            <div class="m-number waves-effect waves-light btn">0</div>
+            <div class="m-number-clean waves-effect waves-light btn"><</div>
+        </div>
+    </div>
+
+    <div id="search-container">
+        
+            
+
+    </div>
+
+</body>
+
+</html>
